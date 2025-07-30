@@ -1,0 +1,22 @@
+name: Google Indexing API Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  index-now:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install googleapis
+
+      - name: Run Indexing Script
+        run: node index.js
